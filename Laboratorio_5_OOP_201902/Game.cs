@@ -103,10 +103,13 @@ namespace Laboratorio_5_OOP_201902
                 return -1;
             }
         }
+
+        // Tengo que trabajar en este metodo
         public void Play()
         {
-            throw new NotImplementedException();
+            
         }
+
         public void AddDecks()
         {
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\Decks.txt";
