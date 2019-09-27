@@ -120,7 +120,13 @@ namespace Laboratorio_5_OOP_201902
 
         public static void ShowListOptions(List<string> options, string message = null)
         {
-
+            if (message != null) Console.WriteLine(message);
+            int count = 0;
+            foreach (string option in options)
+            {
+                Console.WriteLine($"({count}) " + option);
+                count++;
+            }
         }
 
         public static void ClearConsole()

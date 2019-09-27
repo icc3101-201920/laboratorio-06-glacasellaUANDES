@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 
+
 namespace Laboratorio_5_OOP_201902
 {
     public class Game
@@ -22,7 +23,18 @@ namespace Laboratorio_5_OOP_201902
         {
             decks = new List<Deck>();
             captains = new List<SpecialCard>();
+            players = new Player[] { new Player(), new Player() };
+            Random random = new Random();
+            int newNumber = random.Next(0, 2);
+            if (newNumber == 0) this.activePlayer = players[0];
+            else this.activePlayer = players[1];
+            this.boardGame = new Board();
+            players[0].Board = this.boardGame;
+            players[1].Board = this.boardGame;
+            AddDecks();
+            AddCaptains();
         }
+
         //Propiedades
         public Player[] Players
         {
