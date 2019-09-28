@@ -54,6 +54,7 @@ namespace Laboratorio_5_OOP_201902
 
         public static void ShowCaptains(List<SpecialCard> specialcards)
         {
+            Console.WriteLine("Select one Captain: ");
             int count = 0;
             foreach (SpecialCard card in specialcards)
             {

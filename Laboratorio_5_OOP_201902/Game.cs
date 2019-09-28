@@ -104,12 +104,42 @@ namespace Laboratorio_5_OOP_201902
             }
         }
 
-        // Tengo que trabajar en este metodo
+        
         public void Play()
         {
+            for (int i = 1; i <= 2; i++)
+            {
+                Visualization.ShowProgramMessage($"Player {i} select Deck and Captain: ");
+                Visualization.ShowDecks(decks);
+                Visualization.GetUserInput(decks.Count);
+                Visualization.ShowCaptains(captains);
+                Visualization.GetUserInput(captains.Count);
+                players[i].FirstHand();
+                Visualization.ShowHand(players[i].Hand);
+                Visualization.ShowListOptions(new List<string>() { "Change Card", "Pass" }, "Change 3 cards or ready to play");
+                int usrdec = Visualization.GetUserInput(1);
+                if (usrdec == 0)
+                {
+                    int j = 0;
+                    while ( i< 3)
+                    {
+                        Visualization.ShowProgramMessage($"Player {i} change cards:");
+                        Visualization.ShowHand(players[i].Hand);
+                        Visualization.ShowProgramMessage("Input the number of the cards to change (max 3). To stop enter -1");
+                        int usrdec2 = Visualization.GetUserInput(players[i].Hand.Cards.Count);
+                        if (usrdec2 == -1) break;
+                        Random random = new Random();
+                        int newrandom = random.Next(players[i].Hand.Cards.Count);
+                        players[i].Hand.Cards[newrandom] = this.decks[i].Cards[newrandom];
+                        j++;
+                    }
+                }
+                Visualization.ClearConsole();
+            }
             
         }
 
+        
         public void AddDecks()
         {
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\Decks.txt";
@@ -151,6 +181,7 @@ namespace Laboratorio_5_OOP_201902
             }
             
         }
+
         public void AddCaptains()
         {
             string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent + @"\Files\Captains.txt";
